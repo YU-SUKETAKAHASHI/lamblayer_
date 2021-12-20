@@ -8,9 +8,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
     - run: |
         cd /tmp
-        curl -sL https://github.com/YU-SUKETAKAHASHI/lamblayer/releases/download/${{ inputs.version }}/lamblayer_${{ inputs.version }}_linux_amd64.tar.gz | tar zxvf -
-        sudo install lamblayer_${{ inputs.version }}_linux_amd64/lamblayer /usr/local/bin
-        rm -rf lamblayer_${{ inputs.version }}_linux_amd64/
-      shell: bash
+        curl -sL https://github.com/YU-SUKETAKAHASHI/lamblayer/archive/refs/tags/{{ inputs.version }}.tar.gz | tar zxvf -
+        cd lamblayer-v{{ inputs.version }}
+        pip install lamblayer
+      shell: bashcd

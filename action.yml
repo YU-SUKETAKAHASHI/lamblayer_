@@ -1,0 +1,16 @@
+name: 'lamblayer'
+author: 'takahashi@adansons.co.jp'
+description: 'A minimal deployment tool for AWS Lambda layers.'
+inputs:
+  version:
+    description: "A version to install lamblayer"
+    default: "v0.3.0"
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        cd /tmp
+        curl -sL https://github.com/YU-SUKETAKAHASHI/lamblayer/releases/download/${{ inputs.version }}/lamblayer_${{ inputs.version }}_linux_amd64.tar.gz | tar zxvf -
+        sudo install lamblayer_${{ inputs.version }}_linux_amd64/lamblayer /usr/local/bin
+        rm -rf lamblayer_${{ inputs.version }}_linux_amd64/
+      shell: bash

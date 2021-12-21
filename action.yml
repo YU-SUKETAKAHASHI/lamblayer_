@@ -3,7 +3,7 @@ author: 'takahashi@adansons.co.jp'
 description: 'A minimal deployment tool for AWS Lambda layers.'
 inputs:
   version:
-    description: "A version to install lamblayer"
+    description: "A version of lamblayer"
     default: "v0.3.0"
 runs:
   using: "composite"
@@ -12,8 +12,5 @@ runs:
       with:
         python-version: 3.9
     - run: |
-        cd /tmp
-        curl -sL https://github.com/YU-SUKETAKAHASHI/lamblayer/archive/refs/tags/{{ inputs.version }}.tar.gz | tar zxvf -
-        cd lamblayer-v{{ inputs.version }}
-        pip install lamblayer
+        pip install git+https://github.com/YU-SUKETAKAHASHI/lamblayer.git@${{ inputs.version }}
       shell: bashcd

@@ -14,4 +14,4 @@ runs:
         python-version: 3.9
     - run: |
         pip install git+https://github.com/YU-SUKETAKAHASHI/lamblayer.git@${{ inputs.version }}
-      shell: bashcd
+      shell: bash

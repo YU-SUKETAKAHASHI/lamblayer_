@@ -16,9 +16,9 @@ def get_version():
 setup(
     name="lamblayer",
     version=get_version(),
-    description="a minimal deployment tool for AWS Lambda layers",
-    author="Yusuke Takahashi",
-    author_email="takahashi@adansons.co.jp",
+    description="A minimal deployment tool for AWS Lambda layers",
+    author="Adansons Inc.",
+    author_email="engineer@adansons.co.jp",
     packages=find_packages("lamblayer"),
     install_requires=["boto3", "click"],
     entry_points={"console_scripts": ["lamblayer=lamblayer.cli:main"]},

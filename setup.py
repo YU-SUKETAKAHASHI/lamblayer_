@@ -20,6 +20,7 @@ setup(
     author="Adansons Inc.",
     author_email="engineer@adansons.co.jp",
     packages=find_packages("lamblayer"),
+    package_dir={"": "lamblayer"},
     install_requires=["boto3", "click"],
     entry_points={"console_scripts": ["lamblayer=lamblayer.cli:main"]},
 )

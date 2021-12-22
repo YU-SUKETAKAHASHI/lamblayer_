@@ -13,5 +13,6 @@ runs:
       with:
         python-version: 3.9
     - run: |
+        pip install wheel
         pip install git+https://github.com/YU-SUKETAKAHASHI/lamblayer.git@${{ inputs.version }}
       shell: bash

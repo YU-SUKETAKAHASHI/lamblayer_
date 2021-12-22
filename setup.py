@@ -2,7 +2,6 @@ import os
 import re
 
 from setuptools import setup
-from setuptools import find_packages
 
 ROOT = os.path.dirname(__file__)
 VERSION_RE = re.compile(r"""__version__ = ['"]([0-9.]+)['"]""")
@@ -19,8 +18,7 @@ setup(
     description="A minimal deployment tool for AWS Lambda layers",
     author="Adansons Inc.",
     author_email="engineer@adansons.co.jp",
-    packages=find_packages("lamblayer"),
-    package_dir={"": "lamblayer"},
-    install_requires=["boto3", "click"],
+    packages=["lamblayer"],
+    install_requires=["boto3", "click", "requests"],
     entry_points={"console_scripts": ["lamblayer=lamblayer.cli:main"]},
 )

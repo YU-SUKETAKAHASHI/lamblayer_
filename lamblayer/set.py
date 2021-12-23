@@ -89,7 +89,11 @@ class Set(Lamblayer):
         response = self.session.client("lambda").list_layer_versions(
             LayerName=layer_name,
         )
-        version = int(response["LayerVersions"][0]["Version"])
+        try:
+            version = int(response["LayerVersions"][0]["Version"])
+        except IndexError:
+            version = 1
+
         return version
 
     def _gen_layer_arn(self, layer_name, version):

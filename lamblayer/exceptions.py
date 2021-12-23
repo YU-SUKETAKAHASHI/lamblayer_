@@ -15,12 +15,6 @@ class LamblayerBaseError(Exception):
         return f"{self.message}"
 
 
-class LamblayerInvalidRegionError(LamblayerBaseError):
-    def __init__(self, region="-"):
-        message = f"got invalid region name: {region}"
-        super().__init__(message)
-
-
 class LamblayerInvalidOptionError(LamblayerBaseError):
     def __init__(self, message="-"):
         super().__init__(message)

@@ -7,8 +7,6 @@ from logging import getLogger, StreamHandler, Formatter
 
 import boto3
 
-from .exceptions import LamblayerInvalidRegionError
-
 
 class Lamblayer:
     def __init__(
@@ -61,11 +59,6 @@ class Lamblayer:
                 self.region = session.region_name
         else:
             session = boto3.Session(region_name=self.region)
-
-        # validate region.
-        available_regions = session.get_available_regions("lambda")
-        if self.region not in available_regions:
-            raise LamblayerInvalidRegionError(self.region)
 
         self.logger.debug(f"session: {session}")
         self.logger.debug(f"region: {self.region}")

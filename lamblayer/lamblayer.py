@@ -49,19 +49,16 @@ class Lamblayer:
             boto3.session.Session object
         """
         # create session.
-        if self.profile is not None:
-            if self.region is not None:
-                session = boto3.Session(
-                    profile_name=self.profile, region_name=self.region
-                )
-            else:
-                session = boto3.Session(profile_name=self.profile)
-                self.region = session.region_name
-        else:
+        if (self.profile is not None) and (self.region is not None):
+            session = boto3.Session(profile_name=self.profile, region_name=self.region)
+        elif (self.profile is not None) and (self.region is None):
+            session = boto3.Session(profile_name=self.profile)
+        elif (self.profile is None) and (self.region is not None):
             session = boto3.Session(region_name=self.region)
+        elif (self.profile is None) and (self.region is None):
+            session = boto3.Session()
 
         self.logger.debug(f"session: {session}")
-        self.logger.debug(f"region: {self.region}")
         return session
 
     def _get_account_id(self):

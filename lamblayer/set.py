@@ -70,6 +70,12 @@ class Set(Lamblayer):
             for l_name in layers_name
         ]
 
+        # update function.json for lambroll.
+        if layers_name is not None:
+            with open(function_path, "w") as f:
+                layer_param["Layers"] = layers
+                json.dump(layer_param, f)
+
         return function_name, layers
 
     def _get_layer_latest_version_number(self, layer_name):

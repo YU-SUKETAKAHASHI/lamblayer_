@@ -3,6 +3,8 @@
 # Copyright 2021 Adansons Inc.
 # Please contact takahashi@adansons.co.jp
 
+import os
+
 from logging import getLogger, StreamHandler, Formatter
 
 import boto3
@@ -53,10 +55,12 @@ class Lamblayer:
             session = boto3.Session(profile_name=self.profile, region_name=self.region)
         elif (self.profile is not None) and (self.region is None):
             session = boto3.Session(profile_name=self.profile)
+            self.region = os.getenv("AWS_DEFAULT_REGION")
         elif (self.profile is None) and (self.region is not None):
             session = boto3.Session(region_name=self.region)
         elif (self.profile is None) and (self.region is None):
             session = boto3.Session()
+            self.region = os.getenv("AWS_DEFAULT_REGION")
 
         self.logger.debug(f"session: {session}")
         return session

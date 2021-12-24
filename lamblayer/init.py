@@ -21,7 +21,7 @@ class Init(Lamblayer):
 
     def init(self, function_name, download):
         """
-        Inisialize set layer config file, and download layer zip contents.
+        Inisialize function config file, and download layer zip contents.
 
         Params
         ======
@@ -45,7 +45,7 @@ class Init(Lamblayer):
         self.logger.debug(f"function_name: {function_name}")
         self.logger.debug(f"layers: {layer_version_arns}")
 
-        self._gen_set_layer_json(function_name, layer_version_arns)
+        self._gen_function_json(function_name, layer_version_arns)
 
         if download:
             self.logger.info("starging download layers")
@@ -55,9 +55,9 @@ class Init(Lamblayer):
                 layer_content_url = self._get_layer_url(layer_version_arn)
                 self._download_layer(layer_content_url)
 
-    def _gen_set_layer_json(self, function_name, layer_version_arns):
+    def _gen_function_json(self, function_name, layer_version_arns):
         """
-        Generate a set layer config file.
+        Generate a function config file.
 
         Params
         ======
@@ -67,19 +67,19 @@ class Init(Lamblayer):
             the ARN of the layer version
 
         """
-        SET_LAYER = "set_layer.json"
+        FUNCTION = "function.json"
 
         config = {
             "FunctionName": function_name,
             "Layers": layer_version_arns,
         }
 
-        if os.path.exists(SET_LAYER):
+        if os.path.exists(FUNCTION):
             if not click.confirm("Overwrite existing file set_layer.json?"):
                 self.logger.info("chanceled")
                 return 0
 
-        with open(SET_LAYER, "w") as f:
+        with open(FUNCTION, "w") as f:
             json.dump(config, f, indent=4)
 
     def _get_layer_url(self, layer_version_arn):

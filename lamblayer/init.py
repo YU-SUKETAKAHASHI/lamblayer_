@@ -41,7 +41,7 @@ class Init(Lamblayer):
         except KeyError:
             layer_version_arns = []
 
-        self.logger.info("createing set_layer.json")
+        self.logger.info("createing function.json")
         self.logger.debug(f"function_name: {function_name}")
         self.logger.debug(f"layers: {layer_version_arns}")
 

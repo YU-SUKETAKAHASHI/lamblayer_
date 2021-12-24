@@ -75,7 +75,7 @@ class Init(Lamblayer):
         }
 
         if os.path.exists(FUNCTION):
-            if not click.confirm("Overwrite existing file set_layer.json?"):
+            if not click.confirm(f"Overwrite existing file {FUNCTION}?"):
                 self.logger.info("chanceled")
                 return 0
 

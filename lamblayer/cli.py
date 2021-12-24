@@ -251,7 +251,7 @@ def list(ctx, profile, region, log_level):
         logger.info("completed")
 
 
-@main.command(help="initialize set_layer.json")
+@main.command(help="initialize function.json")
 @click.pass_context
 @click.option(
     "--profile",

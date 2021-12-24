@@ -4,7 +4,7 @@ description: 'A minimal deployment tool for AWS Lambda layers.'
 inputs:
   version:
     description: "A version of lamblayer"
-    default: "v0.3.0"
+    default: "v0.1.0"
 runs:
   using: "composite"
   steps:

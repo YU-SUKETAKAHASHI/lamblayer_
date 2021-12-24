@@ -1,6 +1,6 @@
 # lamblayer
 
-lamblayer is a minimal deployment tool for AWS Lambda Layers.
+lamblayer is a minimal deployment tool for AWS Lambda layers.
 
 lamblayer does,
 - Create a Layers of built pip-installable python packages.
@@ -12,7 +12,7 @@ That's all.
 ## Install
 ### pip
 ```
-$ pip install lamblayer
+$ pip install git+https://github.com/YU-SUKETAKAHASHI/lamblayer.git@v0.1.0
 ```
 
 ### Github Actions
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: YU-SUKETAKAHASHI/lamblayer@v0
         with:
-          version: v0.2.0
+          version: v0.1.0
       - run: |
           lamblayer set
 
@@ -69,7 +69,7 @@ Options:
 
 Commands:
   create   create a layer.
-  init     initialize set_layer.json
+  init     initialize function.json
   list     show list of the layers.
   set      set layers to function.
   version  show lamblayer's version number.
@@ -80,17 +80,17 @@ Commands:
 ```
 Usage: lamblayer init [OPTIONS]
 
-  initialize set_layer.json
+  initialize function.json
 
 Options:
   --profile TEXT                  AWS credential profile
-  --roll-to-assume TEXT           AWS IAM Role to assume
   --region TEXT                   AWS region
   --log-level [DEBUG|INFO|WARNING|ERROR|CRITICAL]
                                   log level
   --function-name TEXT            function name for initialize  [default:
                                   LAMBLAYER]
-  --download                      Download all layers.zip  [default: False]
+  --download                      download all layers.zip, or not  [default:
+                                  False]
   --help                          Show this message and exit.
 ```
 `lamblayer init` create `set_layer.json` as a configration file for layers of the function.
@@ -222,8 +222,8 @@ the pip-installable packages name. You can specify version of package in the sam
 layer.json is a definition for Lambda layers. JSON structure is based from [`PublishLayerVersion` for Lambda API](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html).
 ```json
 {
-    "LayerName": "lamblayer",
-    "Description": "laaaaaaaaamriderrrrr",
+    "LayerName": "numpy_requests",
+    "Description": "numpy==1.20.2, requests",
     "CompatibleRuntimes": [
         "python3.7",
         "python3.8",
@@ -282,7 +282,6 @@ Usage: lamblayer list [OPTIONS]
 
 Options:
   --profile TEXT                  AWS credential profile
-  --roll-to-assume TEXT           AWS IAM Role to assume
   --region TEXT                   AWS region
   --log-level [DEBUG|INFO|WARNING|ERROR|CRITICAL]
                                   log level

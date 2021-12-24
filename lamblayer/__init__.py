@@ -3,4 +3,4 @@
 # Copyright 2021 Adansons Inc.
 # Please contact takahashi@adansons.co.jp
 
-__version__ = "0.3.0"
+__version__ = "0.1.0"

@@ -31,13 +31,32 @@ jobs:
 ```
 
 ## Quick start
-hogehoge
+Try migrate your existing Lambda function quick_start.
+```
+$ mkdir quick_start
+$ cd quick-start
+$ lamblayer init --function-name quick_start
+2021-12-24 10:13:41,225: [INFO]: lamblayer : v0.1.0
+2021-12-24 10:13:42,132: [INFO]: starting init quick_start
+2021-12-24 10:13:42,318: [INFO]: createing function.json
+2021-12-24 10:13:42,319: [INFO]: completed
+```
+
+Now you can set layer to quick_start fuction using `lamblayer set`.
+```
+$ lamblayer set
+2021-12-24 10:23:34,041: [INFO]: lamblayer : v0.3.0
+2021-12-24 10:23:35,312: [INFO]: starting set layers to quick_start
+2021-12-24 10:23:35,723: [INFO]: completed
+```
+
+
 
 ## Usage
 ```
 Usage: lamblayer [OPTIONS] COMMAND [ARGS]...
 
-  lamblayer : v0.3.0
+  lamblayer : v0.1.0
 
   lamblayer is a minimal deployment tool for AWS Lambda Layers.
 

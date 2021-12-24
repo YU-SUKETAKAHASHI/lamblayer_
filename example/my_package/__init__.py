@@ -1,1 +1,2 @@
-from .hoge import hello
+from .hello import module1
+from .answer import module2

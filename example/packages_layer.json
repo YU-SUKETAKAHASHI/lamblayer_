@@ -1,6 +1,6 @@
 {
-    "LayerName": "pikosuke_layer",
-    "Description": "pikoooooooooooooo",
+    "LayerName": "packages_layer",
+    "Description": "numpy, requests",
     "CompatibleRuntimes": [
         "python3.7",
         "python3.8",

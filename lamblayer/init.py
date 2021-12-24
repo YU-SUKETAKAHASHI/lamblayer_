@@ -35,8 +35,11 @@ class Init(Lamblayer):
         response = self.session.client("lambda").get_function(
             FunctionName=function_name
         )
-        layers = response["Configuration"]["Layers"]
-        layer_version_arns = [layer["Arn"] for layer in layers]
+        try:
+            layers = response["Configuration"]["Layers"]
+            layer_version_arns = [layer["Arn"] for layer in layers]
+        except KeyError:
+            layer_version_arns = []
 
         self.logger.info("createing set_layer.json")
         self.logger.debug(f"function_name: {function_name}")
